@@ -1,0 +1,49 @@
+<h1> Add a prescription to <%= full_name(@patient) %></h1>
+
+
+<%= form_for [@patient, @prescription], html: {class: 'signin-form'} do |f| %>
+
+  <p class="error"><%= flash[:error] %></p>
+
+  <% @prescription.errors.full_messages.each do |message| %>
+
+    <li class="error"><%= message %></li>
+
+  <% end %>
+
+  <br>
+
+  <%= f.label 'Medication' %>
+
+  <%= f.collection_select(:medication_id, Medication.all, :id, :name, selected: 'Please choose a medication') %>
+
+  <br>
+
+  <%= f.label :dosage %>
+
+  <%= f.text_field :dosage, placeholder: 'ex. 4 ml or 3 pills' %>
+
+  <br>
+
+  <%= f.label :schedule %>
+
+  <%= f.text_field :schedule, placeholder: 'ex. every four hours' %>
+
+  <br>
+
+  <%= f.label :starts_on %>
+
+  <%= f.date_select :starts_on %>
+
+  <br>
+
+  <%= f.label :ends_on %>
+
+  <%= f.date_select :ends_on %>
+
+  <br>
+
+  <%= f.submit 'Create Prescription' %>
+
+
+<% end %>
