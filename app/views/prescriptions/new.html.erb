@@ -15,7 +15,7 @@
 
   <%= f.label 'Medication' %>
 
-  <%= f.collection_select(:medication_id, Medication.all, :id, :name, selected: 'Please choose a medication') %>
+  <%= f.collection_select(:medication_id, Medication.all, :id, :name, include_blank: 'Please choose a medication') %>
 
   <br>
 

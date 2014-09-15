@@ -8,13 +8,6 @@ class PrescriptionsController < ApplicationController
 
   def create
     @prescription = Prescription.new(prescription_params)
-
-
-    # if parse_end_date < parse_start_date
-    #   @prescription.other_errors = "End date must be after the start date"
-    # end
-
-
     @patient = Patient.find(params[:patient_id])
     @prescription.user_id = session[:user_id]
     @prescription.patient_id = params[:patient_id]
